@@ -102,8 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentAfterDrag: {fileID: 0}
-  worldItemPrefab: {fileID: 0}
+  worldItemPrefab: {fileID: 664535106317845353, guid: 3c9d5802b309efb46a7a41c2904c1d1b, type: 3}
   dropLayerMask:
     serializedVersion: 2
     m_Bits: 128
   itemID: Chave
+  raycastCamera: {fileID: 0}

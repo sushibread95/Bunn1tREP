@@ -102,8 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentAfterDrag: {fileID: 0}
-  worldItemPrefab: {fileID: 5323615309052827838, guid: 58167840fe2c63847a17bd698b897f74, type: 3}
+  worldItemPrefab: {fileID: 6764358589484648642, guid: 040126a81f5510041bbcfbeb0b337d87, type: 3}
   dropLayerMask:
     serializedVersion: 2
     m_Bits: 128
   itemID: Fus
+  raycastCamera: {fileID: 0}
