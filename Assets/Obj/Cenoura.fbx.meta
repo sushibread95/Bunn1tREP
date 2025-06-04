@@ -1,9 +1,39 @@
 fileFormatVersion: 2
-guid: afeadafad425bcb4d8c7056c45aea0a8
+guid: 411936b1ebb4f704fb1139d9ae345cb6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cenoura
+    second: {fileID: 2100000, guid: d9261b26e18ccf14fb1817bca4145fef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CenouraL
+    second: {fileID: 2100000, guid: 6bb6f9e4dcfced54786e09a7cc7cef50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MatVisor
+    second: {fileID: 2100000, guid: 3905fe6f31d2de54ab3512ce8a08df87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 8f8b0d5689b4cfd42b8c51317e17a6ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sombra
+    second: {fileID: 2100000, guid: f2ad272b37d7625488e35f463f790f4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Verde
+    second: {fileID: 2100000, guid: 78e92022cf59032469344f7cd9785b49, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

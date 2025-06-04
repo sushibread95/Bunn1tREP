@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
     }
     }
 
+
     void FixedUpdate()
     {
         if (IsInPuzzle) return;
@@ -133,19 +134,8 @@ public class PlayerController : MonoBehaviour
             {
                 StartPulling();
             }
-
-            if (pulledObject != null)
+            else
             {
-                isPulling = true;
-
-                // Aciona a animação se tiver Cenoura
-                Cenoura cenoura = pulledObject.GetComponentInChildren<Cenoura>();
-                if (cenoura != null)
-                {
-                    cenoura.StartBeingPulled();
-                }
-
-                // Faz o movimento do objeto puxado
                 Vector3 pullDirection = moveDirection;
                 if (pullDirection.magnitude > 0.1f)
                 {
@@ -156,13 +146,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (pulledObject != null)
         {
-            // Parar animação ao soltar
-            Cenoura cenoura = pulledObject.GetComponentInChildren<Cenoura>();
-            if (cenoura != null)
-            {
-                cenoura.StopBeingPulled();
-            }
-
             pulledObject = null;
             pulledObjectRb = null;
             isPulling = false;
@@ -283,9 +266,7 @@ public class PlayerController : MonoBehaviour
             pulledObject = closestObject;
             pulledObjectRb = pulledObject.GetComponent<Rigidbody>();
             isPulling = true;
-
         }
-
     }
 
     private void DetectNearbyFeedback()
