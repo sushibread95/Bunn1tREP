@@ -23,7 +23,7 @@ public class DynamicShadow : MonoBehaviour
             transform.localScale = new Vector3(scale, 1f, scale);
 
            
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            transform.rotation = Quaternion.Euler(90f, 0f, 0f);
         }
         else
         {
