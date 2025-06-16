@@ -51,45 +51,43 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-    rb.interpolation = RigidbodyInterpolation.Interpolate;
-    rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-    defaultAngularDrag = rb.angularDamping;
-    rb.maxAngularVelocity = maxAngularVelocity;
+        defaultAngularDrag = rb.angularDamping;
+        rb.maxAngularVelocity = maxAngularVelocity;
 
-    jumpButton.onClick.AddListener(Jump);
+        jumpButton.onClick.AddListener(Jump);
 
-    var trigger = interactButton.gameObject.AddComponent<EventTrigger>();
-    var pointerDown = new EventTrigger.Entry();
-    pointerDown.eventID = EventTriggerType.PointerDown;
-    pointerDown.callback.AddListener((data) => { OnInteractButtonPressed(); });
+        var trigger = interactButton.gameObject.AddComponent<EventTrigger>();
+        var pointerDown = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
+        pointerDown.callback.AddListener((data) => { OnInteractButtonPressed(); });
 
-    var pointerUp = new EventTrigger.Entry();
-    pointerUp.eventID = EventTriggerType.PointerUp;
-    pointerUp.callback.AddListener((data) => { OnInteractButtonReleased(); });
+        var pointerUp = new EventTrigger.Entry { eventID = EventTriggerType.PointerUp };
+        pointerUp.callback.AddListener((data) => { OnInteractButtonReleased(); });
 
-    trigger.triggers.Add(pointerDown);
-    trigger.triggers.Add(pointerUp);
+        trigger.triggers.Add(pointerDown);
+        trigger.triggers.Add(pointerUp);
 
-    // ⚠️ Adicionado: Carregamento pós-cena, se necessário
-    if (GameState.ShouldLoad)
-    {
-        Debug.Log("[LOAD] GameState.ShouldLoad é true, chamando LoadGame() via PlayerController");
-        GameState.ShouldLoad = false;
-        SaveSystem.LoadGame(this.gameObject);
+        if (GameState.ShouldLoad)
+        {
+            Debug.Log("[LOAD] GameState.ShouldLoad é true, chamando LoadGame() via PlayerController");
+            GameState.ShouldLoad = false;
+            SaveSystem.LoadGame(this.gameObject);
+        }
     }
-    }
-
 
     void FixedUpdate()
     {
         if (IsInPuzzle) return;
+
         timeSinceJump += Time.fixedDeltaTime;
         CheckGrounded();
 
         Vector2 input = new Vector2(joystick.Horizontal, joystick.Vertical);
         if (input.magnitude > 1f) input.Normalize();
 
+        // ❗Direção com base na rotação da câmera
         Vector3 cameraForward = Camera.main.transform.forward;
         cameraForward.y = 0f;
         cameraForward.Normalize();
