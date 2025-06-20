@@ -16,31 +16,34 @@ public class Puzzle3Manager : MonoBehaviour
     public void CheckSolution()
     {
         bool allCorrect = true;
-        string lastCorrectID = "";
 
         foreach (ComponentConnector component in components)
         {
-            if (component.currentSlot != null && component.isConnected && component.componentID == component.currentSlot.expectedID)
-            {
-                lastCorrectID = component.componentID; // guarda o último ID correto
-            }
-            else
+            if (component.currentSlot == null || !component.isConnected || component.componentID != component.currentSlot.expectedID)
             {
                 allCorrect = false;
+                break;
             }
         }
 
-        // Atualiza o terminal com a cor do último correto
+        // Atualiza os indicadores individualmente
         foreach (Puzzle3IndicatorFeedback indicator in indicators)
         {
-            if (indicator.indicatorID == lastCorrectID)
+            bool isCorrect = false;
+
+            foreach (ComponentConnector component in components)
             {
-                indicator.SetConnected(true);
+                if (component.currentSlot != null &&
+                    component.isConnected &&
+                    component.componentID == component.currentSlot.expectedID &&
+                    indicator.indicatorID == component.componentID)
+                {
+                    isCorrect = true;
+                    break;
+                }
             }
-            else
-            {
-                indicator.SetConnected(false);
-            }
+
+            indicator.SetConnected(isCorrect);
         }
 
         if (allCorrect && components.Length == indicators.Length)

@@ -15,10 +15,19 @@ public class ComponentConnector : MonoBehaviour
 
     public void SnapToSlot(ConnectorSlot slot)
     {
-        if (slot == null) return;
+        if (slot == null)
+        {
+            Debug.LogWarning("[ComponentConnector] Slot nulo. Não foi possível snapar.");
+            return;
+        }
 
-        transform.position = slot.snapPoint.position;
-        transform.rotation = slot.snapPoint.rotation;
+        Transform snapReference = slot.snapPoint != null ? slot.snapPoint : slot.transform;
+
+        transform.position = snapReference.position;
+        transform.rotation = snapReference.rotation;
+
+        if (rb == null)
+            rb = GetComponent<Rigidbody>();
 
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
@@ -28,6 +37,8 @@ public class ComponentConnector : MonoBehaviour
 
         isConnected = true;
         currentSlot = slot;
+
+        Debug.Log($"[ComponentConnector] '{name}' snapado ao slot '{slot.name}'");
     }
 
     public void Release()

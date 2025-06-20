@@ -15,31 +15,33 @@ public class CableConnector : MonoBehaviour
 
     public void SnapToSlot(CableSlot slot)
     {
-        if (slot == null) return;
+        if (slot == null)
+        {
+            Debug.LogWarning("[CableConnector] Slot nulo. Não foi possível snapar.");
+            return;
+        }
 
-        // Posiciona exatamente no SnapPoint
-        transform.position = slot.snapPoint.position;
-        transform.rotation = slot.snapPoint.rotation;
+        Transform snapReference = slot.snapPoint != null ? slot.snapPoint : slot.transform;
 
-        // Zera movimentos físicos
+        transform.position = snapReference.position;
+        transform.rotation = snapReference.rotation;
+
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        // Congela tudo para evitar rodopios
         rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints.FreezeAll;
 
-        // Atualiza estado
         isConnected = true;
         currentSlot = slot;
 
-        // Verifica se todos os cabos estão no lugar após o encaixe
+        Debug.Log($"[CableConnector] '{name}' snapado ao slot '{slot.name}'");
+
         CablePuzzleManager.Instance.CheckSolution();
     }
 
     public void Release()
     {
-        // Libera movimento novamente
         rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints.None;
 

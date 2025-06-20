@@ -25,29 +25,39 @@ public class CablePuzzleManager : MonoBehaviour
     {
         bool allCorrect = true;
 
-        foreach (CableConnector component in components)
+        foreach (CableMonitorFeedback indicator in indicators)
         {
-            if (component.currentSlot != null && component.isConnected && component.cableID == component.currentSlot.expectedID)
+            bool isCorrect = false;
+
+            foreach (CableConnector component in components)
             {
-                // Atualiza o monitor correspondente IMEDIATAMENTE
-                foreach (CableMonitorFeedback indicator in indicators)
+                if (component.currentSlot != null &&
+                    component.isConnected &&
+                    component.cableID == component.currentSlot.expectedID &&
+                    indicator.monitorID == component.cableID)
                 {
-                    if (indicator.monitorID == component.cableID)
-                    {
-                        indicator.SetConnected(true);
-                    }
+                    isCorrect = true;
+                    break;
                 }
             }
-            else
+
+            indicator.SetConnected(isCorrect);
+        }
+
+        foreach (CableConnector component in components)
+        {
+            if (component.currentSlot == null ||
+                !component.isConnected ||
+                component.cableID != component.currentSlot.expectedID)
             {
                 allCorrect = false;
+                break;
             }
         }
 
         if (allCorrect && components.Length == indicators.Length)
         {
             Debug.Log("\u2705 Puzzle RGB resolvido!");
-
             StartCoroutine(FinalizePuzzleWithBlink());
         }
     }
@@ -76,11 +86,9 @@ public class CablePuzzleManager : MonoBehaviour
             indicator.SetAllConnected();
         }
 
-        // Remove restrição da Fase 2
         if (linkedPuzzleWall2 != null)
         {
             linkedPuzzleWall2.HandlePuzzleSolved();
         }
     }
 }
-

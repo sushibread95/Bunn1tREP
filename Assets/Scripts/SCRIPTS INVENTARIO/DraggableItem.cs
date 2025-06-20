@@ -42,6 +42,15 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             originalCollectibleData = worldItemPrefab.GetComponent<CollectibleItem>();
         }
+
+        if (raycastCamera == null)
+        {
+            raycastCamera = Camera.main;
+            if (raycastCamera == null)
+            {
+                Debug.LogWarning("[DraggableItem] Nenhuma câmera definida e Camera.main não encontrada.");
+            }
+        }
     }
 
     private void Start()
@@ -75,23 +84,30 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Camera cam = raycastCamera != null ? raycastCamera : null;
-        Ray ray = cam != null ? cam.ScreenPointToRay(eventData.position) : new Ray(transform.position, Vector3.down);
+        Ray ray = raycastCamera != null ? raycastCamera.ScreenPointToRay(eventData.position) : new Ray(transform.position, Vector3.down);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, dropLayerMask))
         {
+            Debug.Log($"[Raycast] Acertou: {hit.collider.gameObject.name}");
             DropZone dropZone = hit.collider.GetComponent<DropZone>();
-            if (dropZone != null && dropZone.acceptedItemID == itemID)
+            if (dropZone != null && !string.IsNullOrEmpty(dropZone.acceptedItemID) && dropZone.acceptedItemID == itemID)
             {
-                GameObject clone = Instantiate(worldItemPrefab, hit.point, Quaternion.identity);
-                ApplyOriginalReferencesTo(clone);
                 dropZone.OnItemSolto();
                 Destroy(gameObject);
                 return;
             }
+            else
+            {
+                Debug.LogWarning("[DraggableItem] DropZone encontrada, mas ID não bateu ou está vazia. Retornando ao inventário.");
+                ReturnToSlot();
+                return;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[Raycast] Nada foi atingido.");
         }
 
-        // Se não acertou nada, dropa perto do jogador
         Vector3 rayStart = player != null ? player.transform.position + player.transform.forward * 0.3f + Vector3.up * 0.3f : transform.position + Vector3.up * 0.3f;
         if (Physics.Raycast(rayStart, Vector3.down, out RaycastHit groundHit, 2f, ~0))
         {

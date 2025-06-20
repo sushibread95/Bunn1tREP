@@ -106,5 +106,5 @@ MonoBehaviour:
   dropLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  itemID: cd
+  itemID: disc
   raycastCamera: {fileID: 0}
