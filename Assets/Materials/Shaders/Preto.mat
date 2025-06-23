@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Plastico
+  m_Name: Preto
   m_Shader: {fileID: -6465566751694194690, guid: c0c44d85f71856347aff781a1bb9e5f8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -117,7 +117,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metal: 0
+    - _Metal: 0.07
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -126,22 +126,22 @@ Material:
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _Smoth: 0.05
+    - _Smoth: 0.35
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _Stripe: 2.1
+    - _Stripe: 0.33
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Cor: {r: 0.35488605, g: 0.50310045, b: 0.5188679, a: 0}
+    - _Cor: {r: 0.23584908, g: 0.22357392, b: 0.20136172, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Metal: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _StripeColor: {r: 0.32293522, g: 0.5133319, b: 0.5566038, a: 0}
+    - _StripeColor: {r: 0.16981131, g: 0.14057493, b: 0.11133855, a: 0}
     - _Suavidade: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
