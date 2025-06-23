@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float airControlForce = 5f;
     [SerializeField] private float maxAirHorizontalSpeed = 6f;
 
+    [Header("Pulo variável")]
+    [SerializeField] private float maxJumpHoldTime = 0.3f;
+    [SerializeField] private float extraJumpForce = 20f;
+
     [Header("Controles")]
     [SerializeField] private Joystick joystick;
     [SerializeField] private Button jumpButton;
@@ -48,6 +52,11 @@ public class PlayerController : MonoBehaviour
     private float jumpCooldown = 0.3f;
     private float lastJumpTime = -1f;
 
+    private bool isJumpButtonHeld = false;
+    private bool canJumpAgain = true;
+    private bool isJumping = false;
+    private float jumpHoldTimer = 0f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -57,7 +66,27 @@ public class PlayerController : MonoBehaviour
         defaultAngularDrag = rb.angularDamping;
         rb.maxAngularVelocity = maxAngularVelocity;
 
-        jumpButton.onClick.AddListener(Jump);
+        var jumpTrigger = jumpButton.gameObject.AddComponent<EventTrigger>();
+
+        var jumpPointerDown = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
+        jumpPointerDown.callback.AddListener((data) =>
+        {
+            if (!isJumpButtonHeld && canJumpAgain)
+            {
+                isJumpButtonHeld = true;
+                Jump();
+            }
+        });
+
+        var jumpPointerUp = new EventTrigger.Entry { eventID = EventTriggerType.PointerUp };
+        jumpPointerUp.callback.AddListener((data) =>
+        {
+            isJumpButtonHeld = false;
+            isJumping = false;
+        });
+
+        jumpTrigger.triggers.Add(jumpPointerDown);
+        jumpTrigger.triggers.Add(jumpPointerUp);
 
         var trigger = interactButton.gameObject.AddComponent<EventTrigger>();
         var pointerDown = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
@@ -87,7 +116,6 @@ public class PlayerController : MonoBehaviour
         Vector2 input = new Vector2(joystick.Horizontal, joystick.Vertical);
         if (input.magnitude > 1f) input.Normalize();
 
-        // ❗Direção com base na rotação da câmera
         Vector3 cameraForward = Camera.main.transform.forward;
         cameraForward.y = 0f;
         cameraForward.Normalize();
@@ -124,6 +152,13 @@ public class PlayerController : MonoBehaviour
             {
                 rb.AddForce(airForce, ForceMode.Acceleration);
             }
+        }
+
+        if (isJumping && isJumpButtonHeld && jumpHoldTimer < maxJumpHoldTime)
+        {
+            float forceThisFrame = extraJumpForce * Time.fixedDeltaTime;
+            rb.AddForce(Vector3.up * forceThisFrame, ForceMode.VelocityChange);
+            jumpHoldTimer += Time.fixedDeltaTime;
         }
 
         if (isHoldingInteract)
@@ -177,6 +212,9 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
             timeSinceJump = 0f;
             lastJumpTime = Time.time;
+            canJumpAgain = false;
+            isJumping = true;
+            jumpHoldTimer = 0f;
             Debug.Log("Jump executado!");
         }
     }
@@ -238,6 +276,11 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.CheckSphere(checkPosition, checkRadius, groundLayer);
 
         Debug.DrawRay(checkPosition, Vector3.down * 0.1f, isGrounded ? Color.green : Color.red);
+
+        if (isGrounded)
+        {
+            canJumpAgain = true;
+        }
     }
 
     private void StartPulling()
