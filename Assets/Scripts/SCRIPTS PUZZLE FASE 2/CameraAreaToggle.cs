@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class CameraAreaToggle : MonoBehaviour
 {
-    [Header("C�mera")]
+    [Header("Câmera")]
     public CinemachineCamera cameraToActivate;
     public int activePriority = 20;
     public int inactivePriority = 0;
@@ -25,6 +25,7 @@ public class CameraAreaToggle : MonoBehaviour
     public void ActivateCamera()
     {
         cameraToActivate.Priority = activePriority;
+
         if (cameraFollowsPlayer && cameraToActivate is CinemachineVirtualCameraBase vCam)
         {
             vCam.Follow = playerTransform;
@@ -37,8 +38,7 @@ public class CameraAreaToggle : MonoBehaviour
     public void DeactivateCamera()
     {
         cameraToActivate.Priority = inactivePriority;
-        activateButton.SetActive(true);
-        deactivateButton.SetActive(false);
+        // Botões agora são controlados fora deste método
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,9 +53,11 @@ public class CameraAreaToggle : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            // Desativa botões manualmente antes de chamar a função
             activateButton.SetActive(false);
             deactivateButton.SetActive(false);
-            DeactivateCamera(); // Desativa se sair da �rea
+
+            DeactivateCamera();
         }
     }
 }
