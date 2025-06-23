@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1902360703632777683}
   - component: {fileID: 3086973942798982692}
   - component: {fileID: 2699060118897589924}
-  - component: {fileID: 3244596890788576916}
   - component: {fileID: 8708658559501711920}
   - component: {fileID: 5813082078643326278}
   - component: {fileID: 6464469995819424266}
@@ -81,19 +80,6 @@ MonoBehaviour:
   componentID: Y
   isConnected: 0
   currentSlot: {fileID: 0}
---- !u!114 &3244596890788576916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110263066569761832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b3887204a7282a40ab760dd82414eaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: 112297fbadd68f84b9eb0e2a20fd95b6, type: 2}
 --- !u!65 &8708658559501711920
 BoxCollider:
   m_ObjectHideFlags: 0

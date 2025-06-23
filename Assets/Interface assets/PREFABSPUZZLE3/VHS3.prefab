@@ -11,14 +11,13 @@ GameObject:
   - component: {fileID: 3938040919424573608}
   - component: {fileID: 2608648477114436474}
   - component: {fileID: 9059557463563839740}
-  - component: {fileID: 5746687453163985299}
   - component: {fileID: 3747899972464822430}
   - component: {fileID: 4419506089180852071}
   - component: {fileID: 5610146081127775678}
   - component: {fileID: -771939100725953888}
   m_Layer: 0
   m_Name: VHS3
-  m_TagString: Movable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,19 +80,6 @@ MonoBehaviour:
   componentID: Y
   isConnected: 0
   currentSlot: {fileID: 0}
---- !u!114 &5746687453163985299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978697595097124095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b3887204a7282a40ab760dd82414eaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: 112297fbadd68f84b9eb0e2a20fd95b6, type: 2}
 --- !u!65 &3747899972464822430
 BoxCollider:
   m_ObjectHideFlags: 0
