@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 9d7ab9fb651380847803f5764440137f
+guid: b9df7f8bed4090d409c778ff2a1db68c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MadeiraA
-    second: {fileID: 2100000, guid: b1648e2dae05baa43a21955607b0f071, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

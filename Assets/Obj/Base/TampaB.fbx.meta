@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9d7ab9fb651380847803f5764440137f
+guid: 1ac3598ba4c247d4bb3e1e23aaa7fb09
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MadeiraA
-    second: {fileID: 2100000, guid: b1648e2dae05baa43a21955607b0f071, type: 2}
+      name: Metal
+    second: {fileID: 2100000, guid: a71b67fbee000ca43942ee85e9b581ee, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
