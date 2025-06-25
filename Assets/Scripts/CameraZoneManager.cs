@@ -37,24 +37,33 @@ public class CameraZoneManager : MonoBehaviour
 
     public void ActivateCamera()
     {
+        Debug.Log("Botão foi clicado");
+
         if (currentCamera != null)
         {
+            Debug.Log("Câmera encontrada: ativando.");
             currentCamera.Priority = activePriority;
             activateButton.gameObject.SetActive(false);
             deactivateButton.gameObject.SetActive(true);
         }
+        else
+        {
+            Debug.LogWarning("Nenhuma câmera ativa atribuída!");
+        }
     }
+
 
     public void DeactivateCamera()
     {
         if (currentCamera != null)
         {
             currentCamera.Priority = inactivePriority;
+
+            var mobileControl = currentCamera.GetComponent<MobileCameraController>();
+            if (mobileControl != null) mobileControl.enabled = false;
+
             activateButton.gameObject.SetActive(true);
             deactivateButton.gameObject.SetActive(false);
-
-            // Desativa lógica do puzzle se existir
-            
         }
     }
 }

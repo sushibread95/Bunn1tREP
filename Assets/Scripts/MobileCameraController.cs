@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Unity.Cinemachine;
 
 public class MobileCameraController : MonoBehaviour
 {
@@ -9,15 +10,28 @@ public class MobileCameraController : MonoBehaviour
     public Vector2 yClamp = new Vector2(-30f, 60f);
     public float distance = 5f;
 
-    [Header("Referência da Área de Toque")]
+    [Header("Área de Toque")]
     public RectTransform touchAreaUI;
 
     private float yaw = 0f;
     private float pitch = 20f;
     private int touchFingerId = -1;
 
+    private CinemachineCamera cinemachineCam;
+
+    void Awake()
+    {
+        cinemachineCam = GetComponent<CinemachineCamera>();
+    }
+
     void LateUpdate()
     {
+        if (cinemachineCam != null && cinemachineCam.Priority < 20)
+        {
+            return;
+        }
+
+
         if (Input.touchCount > 0 && touchAreaUI != null)
         {
             foreach (Touch touch in Input.touches)

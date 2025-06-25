@@ -14,6 +14,11 @@ public class CameraAreaToggle : MonoBehaviour
     [Header("UI")]
     public GameObject activateButton;
     public GameObject deactivateButton;
+    public CameraZoneManager cameraZoneManager; // referencia arrastada no Inspector
+
+
+
+
 
     private void Start()
     {
@@ -26,14 +31,15 @@ public class CameraAreaToggle : MonoBehaviour
     {
         cameraToActivate.Priority = activePriority;
 
-        if (cameraFollowsPlayer && cameraToActivate is CinemachineVirtualCameraBase vCam)
+        if (cameraFollowsPlayer && cameraToActivate != null)
         {
-            vCam.Follow = playerTransform;
+            cameraToActivate.Follow = playerTransform;
         }
 
         activateButton.SetActive(false);
         deactivateButton.SetActive(true);
     }
+
 
     public void DeactivateCamera()
     {
@@ -46,6 +52,7 @@ public class CameraAreaToggle : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             activateButton.SetActive(true);
+            cameraZoneManager.SetCurrentCamera(cameraToActivate);
         }
     }
 
@@ -53,10 +60,9 @@ public class CameraAreaToggle : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Desativa botões manualmente antes de chamar a função
             activateButton.SetActive(false);
             deactivateButton.SetActive(false);
-
+            cameraZoneManager.ClearCurrentCamera();
             DeactivateCamera();
         }
     }

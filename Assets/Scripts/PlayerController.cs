@@ -282,8 +282,13 @@ public class PlayerController : MonoBehaviour
             canJumpAgain = true;
         }
     }
+    public GameObject GetPulledObject()
+    {
+        return pulledObject;
+    }
 
-    private void StartPulling()
+
+    public void StartPulling()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, pullRange);
         float closestDistance = Mathf.Infinity;
