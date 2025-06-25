@@ -9228,10 +9228,10 @@ Animator:
   m_GameObject: {fileID: 730339974}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: af1af6c83cd97174a941f4b795336d6b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3f877cd6e14c6a94c9683048ccd09369, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -13643,6 +13643,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Olhos
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2de5b0d992e330d4abdd7a0a79d50cf8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16430,7 +16434,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3f877cd6e14c6a94c9683048ccd09369, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -20624,7 +20628,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: ff3a4c4197ac2ea47acf03eb2a2930cc, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 9a1538cf0b967d540951370845471d8b, type: 2}
+      objectReference: {fileID: 2100000, guid: d104cdd4740952542b623bfefc0d35ed, type: 2}
     - target: {fileID: -7511558181221131132, guid: ff3a4c4197ac2ea47acf03eb2a2930cc, type: 3}
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
@@ -34745,7 +34749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9042029261708692309, guid: 628b4b2e998b11340bd3556edd779666, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -34785,16 +34789,16 @@ MonoBehaviour:
   player: {fileID: 1727206540}
   visorTransform: {fileID: 1215564142}
   olhosTransform: {fileID: 730339975}
-  corpoTransform: {fileID: 515199527}
+  corpoTransform: {fileID: 0}
   offsetPosicional: {x: 0, y: 0, z: 0}
   visorAnimator: {fileID: 0}
-  olhosAnimator: {fileID: 730339977}
+  olhosAnimator: {fileID: 0}
   idleAnimations:
   - Idle0
   - Idle1
   - Idle2
-  idleCheckTime: 3
-  rotacaoSuave: 4
+  idleCheckTime: 0
+  rotacaoSuave: 0
 --- !u!95 &4584370510121681142
 Animator:
   serializedVersion: 7
