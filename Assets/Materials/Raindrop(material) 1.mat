@@ -86,7 +86,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RaindropsTexture:
-        m_Texture: {fileID: 2800000, guid: 9d62d7a7d8d5a644094214922fca62f5, type: 3}
+        m_Texture: {fileID: 2800000, guid: eade5a27d7f6e5342899f3f463b67e1d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_0f3861433d054ff98abc082775d14377_Texture_1_Texture2D:
@@ -99,6 +99,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2D:
+        m_Texture: {fileID: 8400000, guid: 0f41a9ea6f7deda4ebfe7c7e0851f89c, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -129,8 +133,8 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DistortionPower: 7
-    - _DistortionScale: 1.5
+    - _DistortionPower: 10
+    - _DistortionScale: 1.61
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
@@ -147,7 +151,7 @@ Material:
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _Smoothness_control: 0.333
+    - _Smoothness_control: 0.5
     - _SpecularHighlights: 1
     - _SplashDensity: 5
     - _SplashPower: 1
