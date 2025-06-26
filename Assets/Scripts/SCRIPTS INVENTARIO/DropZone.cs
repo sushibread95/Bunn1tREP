@@ -5,6 +5,9 @@ public class DropZone : MonoBehaviour
     [Header("Objeto que será ativado após o item ser solto")]
     public GameObject objetoParaAtivar;
 
+    [Header("Segundo objeto a ser ativado")]
+    public GameObject objetoParaAtivar2;
+
     [Header("Objeto que será desativado (ex: zona escura)")]
     public GameObject objetoParaDesativar;
 
@@ -38,9 +41,12 @@ public class DropZone : MonoBehaviour
             }
         }
 
-        // Ativa o novo objeto
+        // Ativa os dois objetos (se existirem)
         if (objetoParaAtivar != null)
             objetoParaAtivar.SetActive(true);
+
+        if (objetoParaAtivar2 != null)
+            objetoParaAtivar2.SetActive(true);
 
         // Toca som (se tiver)
         if (somAoAtivar != null)
