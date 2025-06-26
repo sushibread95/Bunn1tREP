@@ -1,22 +1,22 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.Video;
 using Unity.Cinemachine;
 using System.Collections;
 
 public class PuzzleLuzManager : MonoBehaviour
 {
-    [Header("Câmera do puzzle")]
+    [Header("CÃ¢mera do puzzle")]
     public CinemachineCamera puzzleCamera;
 
     [Header("HUD e objetos para esconder durante o puzzle")]
     public GameObject[] objectsToTemporarilyDisable;
 
-    [Header("Conexões")]
+    [Header("ConexÃµes")]
     public int totalCables = 5;
     private int connectedCount = 0;
     private bool puzzleCompleted = false;
 
-    [Header("Vídeo e fade")]
+    [Header("VÃ­deo e fade")]
     public VideoPlayer videoPlayer;
     public CanvasGroup fadeCanvas;
     public float fadeDuration = 1f;
@@ -32,15 +32,15 @@ public class PuzzleLuzManager : MonoBehaviour
     }
     public void StartPuzzle()
     {
-        Debug.Log("[Puzzle] Iniciando lógica do puzzle...");
-        // Aqui você pode ativar UI, objetos de interação, etc.
-        this.enabled = true; // Se quiser começar a lógica por Update()
+        Debug.Log("[Puzzle] Iniciando lÃ³gica do puzzle...");
+        // Aqui vocÃª pode ativar UI, objetos de interaÃ§Ã£o, etc.
+        this.enabled = true; // Se quiser comeÃ§ar a lÃ³gica por Update()
     }
 
     public void StopPuzzle()
     {
-        Debug.Log("[Puzzle] Parando lógica do puzzle...");
-        // Aqui você pode esconder UI, travar inputs etc.
+        Debug.Log("[Puzzle] Parando lÃ³gica do puzzle...");
+        // Aqui vocÃª pode esconder UI, travar inputs etc.
         this.enabled = false;
     }
 
@@ -98,13 +98,13 @@ public class PuzzleLuzManager : MonoBehaviour
 
         if (videoPlayer != null)
         {
-            Debug.Log("[Puzzle] Reproduzindo vídeo...");
+            Debug.Log("[Puzzle] Reproduzindo vÃ­deo...");
             videoPlayer.Play();
 
             while (videoPlayer.isPlaying)
                 yield return null;
 
-            Debug.Log("[Puzzle] Vídeo concluído.");
+            Debug.Log("[Puzzle] VÃ­deo concluÃ­do.");
         }
 
         if (fadeCanvas != null)

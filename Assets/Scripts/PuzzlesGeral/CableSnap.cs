@@ -2,10 +2,34 @@ using UnityEngine;
 
 public class CableSnap : MonoBehaviour
 {
-    public PuzzleLuzManager puzzleManager; // Atribua via Inspector
-    public string targetTag = "CableTarget"; // Tag dos pontos de conexão
-    public float snapDistance = 0.5f; // Distância para snap
+    public PuzzleLuzManager puzzleManager;
+    public string targetTag = "CableTarget";
+    public float snapDistance = 0.5f;
+
     private bool connected = false;
+
+    [Header("Limites de Movimento")]
+    public Collider areaLimitCollider; // Atribuir no Inspector
+
+    private void Update()
+    {
+        if (areaLimitCollider != null && !connected)
+        {
+            KeepInsideBounds();
+        }
+    }
+
+    private void KeepInsideBounds()
+    {
+        Bounds bounds = areaLimitCollider.bounds;
+
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, bounds.min.x, bounds.max.x);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, bounds.min.y, bounds.max.y);
+        clampedPosition.z = Mathf.Clamp(clampedPosition.z, bounds.min.z, bounds.max.z);
+
+        transform.position = clampedPosition;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,17 +41,19 @@ public class CableSnap : MonoBehaviour
 
             if (distance <= snapDistance)
             {
-                // Faz snap ao ponto
+                // Faz snap ao ponto de conexão (posição + rotação)
                 transform.position = other.transform.position;
+                transform.rotation = other.transform.rotation;
+
                 connected = true;
 
-                // Opcional: desativa movimentação
+                // Desativa movimentação
                 if (TryGetComponent<Rigidbody>(out Rigidbody rb))
                 {
                     rb.isKinematic = true;
                 }
 
-                // Chama o Puzzle Manager
+                // Notifica o Puzzle Manager
                 if (puzzleManager != null)
                 {
                     Debug.Log("[Cable] Cabo conectado com sucesso.");
@@ -40,4 +66,5 @@ public class CableSnap : MonoBehaviour
             }
         }
     }
+
 }
