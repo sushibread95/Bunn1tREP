@@ -15,7 +15,6 @@ Material:
   - _ALPHAPREMULTIPLY_ON
   - _ALPHATEST_ON
   - _EMISSION
-  - _NORMALMAP
   - _SPECULAR_SETUP
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
