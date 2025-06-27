@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu inicial.unity
     guid: 6e37a326d7f75f94b941240ac4ad8078
   - enabled: 1
+    path: Assets/Scenes/Cena inicial.unity
+    guid: 6621ddb2a7b0c844aa43ca76bbdc79b2
+  - enabled: 1
     path: Assets/Scenes/Garagem_FINAL.unity
-    guid: 306d2a012c97fe64aa9d8417a344281c
+    guid: 860607ccb4698ce48aea0debd382e709
   - enabled: 1
     path: Assets/Scenes/Creditos.unity
     guid: 2839e5de0add7b44789c997ce8eb1ab3
