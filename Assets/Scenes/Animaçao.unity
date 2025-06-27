@@ -5343,8 +5343,7 @@ MonoBehaviour:
   objectsToTemporarilyDisable: []
   totalCables: 5
   videoPlayer: {fileID: 0}
-  fadeCanvas: {fileID: 0}
-  fadeDuration: 1
+  canvasVideoParent: {fileID: 0}
   objectsToActivate:
   - {fileID: 695615076}
   - {fileID: 1024274397}
@@ -5356,6 +5355,7 @@ MonoBehaviour:
   - {fileID: 212752412}
   - {fileID: 825962418}
   - {fileID: 1355772237}
+  puzzleTriggerCollider: {fileID: 0}
 --- !u!114 &381008594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6233,7 +6233,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aa6f1cab4c5032d429088a4cd523b06a, type: 2}
+  - {fileID: 2100000, guid: 3905fe6f31d2de54ab3512ce8a08df87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10941,7 +10941,7 @@ Transform:
   m_GameObject: {fileID: 850223345}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.99144495, z: -0, w: 0.13052607}
-  m_LocalPosition: {x: -0.07346225, y: 0.7348001, z: 0.69357824}
+  m_LocalPosition: {x: -1.59, y: 1.14, z: 2.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11728,6 +11728,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cbe37975f26b6ae41979e4726222cd43, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cbe37975f26b6ae41979e4726222cd43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cbe37975f26b6ae41979e4726222cd43, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13857,6 +13861,8 @@ MonoBehaviour:
   targetTag: Azul
   snapDistance: 1
   areaLimitCollider: {fileID: 0}
+  connectedCableObject: {fileID: 0}
+  objectToDisable: {fileID: 0}
 --- !u!114 &1097257958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17357,6 +17363,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fonte 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8ad22822efc71fa4395f83126293a5e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19890,7 +19900,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aa6f1cab4c5032d429088a4cd523b06a, type: 2}
+  - {fileID: 2100000, guid: 3905fe6f31d2de54ab3512ce8a08df87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21850,6 +21860,8 @@ MonoBehaviour:
   targetTag: Vermelho
   snapDistance: 1
   areaLimitCollider: {fileID: 0}
+  connectedCableObject: {fileID: 0}
+  objectToDisable: {fileID: 0}
 --- !u!114 &1540036611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30248,6 +30260,8 @@ MonoBehaviour:
   targetTag: Laranja
   snapDistance: 1
   areaLimitCollider: {fileID: 0}
+  connectedCableObject: {fileID: 0}
+  objectToDisable: {fileID: 0}
 --- !u!114 &1825242192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32038,6 +32052,8 @@ MonoBehaviour:
   targetTag: Amarelo
   snapDistance: 1
   areaLimitCollider: {fileID: 0}
+  connectedCableObject: {fileID: 0}
+  objectToDisable: {fileID: 0}
 --- !u!114 &1961834344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33478,6 +33494,8 @@ MonoBehaviour:
   targetTag: Verde
   snapDistance: 1
   areaLimitCollider: {fileID: 0}
+  connectedCableObject: {fileID: 0}
+  objectToDisable: {fileID: 0}
 --- !u!114 &2092240828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33735,7 +33753,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aa6f1cab4c5032d429088a4cd523b06a, type: 2}
+  - {fileID: 2100000, guid: 3905fe6f31d2de54ab3512ce8a08df87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
