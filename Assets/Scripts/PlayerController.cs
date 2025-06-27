@@ -290,7 +290,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartPulling()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, pullRange);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.7f); // usa raio maior para encontrar objetos "distantes"
         float closestDistance = Mathf.Infinity;
         GameObject closestObject = null;
 
@@ -299,10 +299,18 @@ public class PlayerController : MonoBehaviour
             if (hitCollider.CompareTag("Movable"))
             {
                 float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
-                if (distance < closestDistance)
+
+                // Verifica se o objeto permite ser puxado de longe
+                var interactionRange = hitCollider.GetComponent<ObjectInteractionRange>();
+                bool allowFarPull = interactionRange != null && interactionRange.allowDistancePull;
+
+                if (distance <= pullRange || allowFarPull)
                 {
-                    closestDistance = distance;
-                    closestObject = hitCollider.gameObject;
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestObject = hitCollider.gameObject;
+                    }
                 }
             }
         }
@@ -314,6 +322,7 @@ public class PlayerController : MonoBehaviour
             isPulling = true;
         }
     }
+
 
     private void DetectNearbyFeedback()
     {

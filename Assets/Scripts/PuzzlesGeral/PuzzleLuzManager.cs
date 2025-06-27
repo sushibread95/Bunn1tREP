@@ -16,31 +16,32 @@ public class PuzzleLuzManager : MonoBehaviour
     private int connectedCount = 0;
     private bool puzzleCompleted = false;
 
-    [Header("Vídeo e fade")]
+    [Header("Vídeo e Canvas")]
     public VideoPlayer videoPlayer;
-    public CanvasGroup fadeCanvas;
-    public float fadeDuration = 1f;
+    public GameObject canvasVideoParent; // ← Atribuir o "CanvasVideos" aqui no Inspector
 
     [Header("Resultado final")]
     public GameObject[] objectsToActivate;
     public GameObject[] objectsToDeactivate;
+
+    [Header("Collider do puzzle (para desativar após conclusão)")]
+    public Collider puzzleTriggerCollider; // ← Arraste o collider do PuzzleCameraController aqui
 
     void Start()
     {
         puzzleCamera.Priority = 0;
         Debug.Log("[Puzzle] Sistema iniciado.");
     }
+
     public void StartPuzzle()
     {
         Debug.Log("[Puzzle] Iniciando lógica do puzzle...");
-        // Aqui você pode ativar UI, objetos de interação, etc.
-        this.enabled = true; // Se quiser começar a lógica por Update()
+        this.enabled = true;
     }
 
     public void StopPuzzle()
     {
         Debug.Log("[Puzzle] Parando lógica do puzzle...");
-        // Aqui você pode esconder UI, travar inputs etc.
         this.enabled = false;
     }
 
@@ -90,12 +91,13 @@ public class PuzzleLuzManager : MonoBehaviour
     {
         puzzleCompleted = true;
 
-        if (fadeCanvas != null)
+        // ✅ Ativa o Canvas com o vídeo antes de tocar
+        if (canvasVideoParent != null && !canvasVideoParent.activeSelf)
         {
-            Debug.Log("[Puzzle] Iniciando fade-in...");
-            yield return StartCoroutine(Fade(0, 1));
+            canvasVideoParent.SetActive(true);
         }
 
+        // ✅ Reproduz vídeo
         if (videoPlayer != null)
         {
             Debug.Log("[Puzzle] Reproduzindo vídeo...");
@@ -107,12 +109,7 @@ public class PuzzleLuzManager : MonoBehaviour
             Debug.Log("[Puzzle] Vídeo concluído.");
         }
 
-        if (fadeCanvas != null)
-        {
-            Debug.Log("[Puzzle] Iniciando fade-out...");
-            yield return StartCoroutine(Fade(1, 0));
-        }
-
+        // ✅ Ativa e desativa objetos finais
         foreach (GameObject obj in objectsToActivate)
         {
             if (obj != null)
@@ -125,19 +122,14 @@ public class PuzzleLuzManager : MonoBehaviour
                 obj.SetActive(false);
         }
 
+        // ✅ Desativa o collider do puzzle
+        if (puzzleTriggerCollider != null)
+        {
+            puzzleTriggerCollider.enabled = false;
+        }
+
         ExitPuzzle();
 
         Debug.Log("[Puzzle] Finalizado.");
-    }
-
-    IEnumerator Fade(float from, float to)
-    {
-        float t = 0f;
-        while (t < 1f)
-        {
-            t += Time.deltaTime / fadeDuration;
-            fadeCanvas.alpha = Mathf.Lerp(from, to, t);
-            yield return null;
-        }
     }
 }

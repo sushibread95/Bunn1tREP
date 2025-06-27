@@ -4,7 +4,7 @@ public class ObjectInteractionRange : MonoBehaviour
 {
     [Header("Configurações")]
     [Tooltip("Distância mínima para permitir interação especial.")]
-    public float activationRange = 4f;
+    public float activationRange = 1.7f;
 
     [Tooltip("Permite que o objeto seja puxado mesmo fora do pullRange padrão.")]
     public bool allowDistancePull = false;

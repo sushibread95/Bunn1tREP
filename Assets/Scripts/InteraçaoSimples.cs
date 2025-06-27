@@ -24,6 +24,19 @@ public class ObjetoInterativo : MonoBehaviour
         }
     }
 
+    // NOVO método para o botão HUD chamar SEMPArecer fora da área
+    public void BotaoInteragirViaHUD()
+    {
+        if (playerNaArea)
+        {
+            BotaoInteragir();
+        }
+        else
+        {
+            Debug.Log("Player não está na área, botão ignorado");
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

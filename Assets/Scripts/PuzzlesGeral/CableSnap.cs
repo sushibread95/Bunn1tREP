@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class CableSnap : MonoBehaviour
 {
@@ -7,9 +7,22 @@ public class CableSnap : MonoBehaviour
     public float snapDistance = 0.5f;
 
     private bool connected = false;
+    private float initialZ;
 
     [Header("Limites de Movimento")]
-    public Collider areaLimitCollider; // Atribuir no Inspector
+    public Collider areaLimitCollider;
+
+    [Header("Objeto com cabo conectado")]
+    public GameObject connectedCableObject;
+
+    [Header("Objeto a ser desativado ap√≥s conex√£o")]
+    public GameObject objectToDisable;
+
+    private void Start()
+    {
+        // Armazena o valor original do eixo Z
+        initialZ = transform.position.z;
+    }
 
     private void Update()
     {
@@ -26,7 +39,7 @@ public class CableSnap : MonoBehaviour
         Vector3 clampedPosition = transform.position;
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, bounds.min.x, bounds.max.x);
         clampedPosition.y = Mathf.Clamp(clampedPosition.y, bounds.min.y, bounds.max.y);
-        clampedPosition.z = Mathf.Clamp(clampedPosition.z, bounds.min.z, bounds.max.z);
+        clampedPosition.z = initialZ; // Z travado
 
         transform.position = clampedPosition;
     }
@@ -41,19 +54,17 @@ public class CableSnap : MonoBehaviour
 
             if (distance <= snapDistance)
             {
-                // Faz snap ao ponto de conex„o (posiÁ„o + rotaÁ„o)
+                // Snap na posi√ß√£o e rota√ß√£o
                 transform.position = other.transform.position;
                 transform.rotation = other.transform.rotation;
 
                 connected = true;
 
-                // Desativa movimentaÁ„o
                 if (TryGetComponent<Rigidbody>(out Rigidbody rb))
                 {
                     rb.isKinematic = true;
                 }
 
-                // Notifica o Puzzle Manager
                 if (puzzleManager != null)
                 {
                     Debug.Log("[Cable] Cabo conectado com sucesso.");
@@ -61,10 +72,29 @@ public class CableSnap : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("[Cable] PuzzleManager n„o atribuÌdo.");
+                    Debug.LogWarning("[Cable] PuzzleManager n√£o atribu√≠do.");
+                }
+
+                // Ativa o objeto conectado
+                if (connectedCableObject != null)
+                {
+                    connectedCableObject.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("[Cable] connectedCableObject n√£o atribu√≠do.");
+                }
+
+                // Desativa o objeto especificado
+                if (objectToDisable != null)
+                {
+                    objectToDisable.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogWarning("[Cable] objectToDisable n√£o atribu√≠do.");
                 }
             }
         }
     }
-
 }

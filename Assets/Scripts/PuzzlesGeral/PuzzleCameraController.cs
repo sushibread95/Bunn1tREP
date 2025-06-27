@@ -10,7 +10,7 @@ public class PuzzleCameraController : MonoBehaviour
     public Button deactivateButton;
     public PuzzleLuzManager puzzleManager;
 
-    [Header("HUD do jogador que será desativada durante o puzzle")]
+    [Header("HUD do jogador")]
     public GameObject[] playerHUDObjects;
 
     [Header("Prioridades da câmera")]
@@ -18,7 +18,7 @@ public class PuzzleCameraController : MonoBehaviour
     public int inactivePriority = 0;
 
     [Header("Configurações de camada")]
-    public string playerLayerName = "Player";  // Certifique-se que o Player está nessa Layer
+    public string playerLayerName = "Player";
 
     private bool playerInZone = false;
     private bool puzzleActive = false;
@@ -114,5 +114,22 @@ public class PuzzleCameraController : MonoBehaviour
             else
                 mainCam.cullingMask &= ~(1 << playerLayer);
         }
+    }
+
+    // ? Chamado pelo PuzzleLuzManager ao final do puzzle
+    public void ForceEndPuzzle()
+    {
+        puzzleCamera.Priority = inactivePriority;
+        TogglePlayerHUD(true);
+        SetPlayerVisibility(true);
+        puzzleActive = false;
+
+        if (activateButton != null) activateButton.gameObject.SetActive(false);
+        if (deactivateButton != null) deactivateButton.gameObject.SetActive(false);
+
+        // Desativa o collider para impedir nova entrada
+        GetComponent<Collider>().enabled = false;
+
+        Debug.Log("[Puzzle] Puzzle finalizado permanentemente.");
     }
 }
