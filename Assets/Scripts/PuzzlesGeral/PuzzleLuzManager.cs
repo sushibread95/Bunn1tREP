@@ -18,14 +18,17 @@ public class PuzzleLuzManager : MonoBehaviour
 
     [Header("Vídeo e Canvas")]
     public VideoPlayer videoPlayer;
-    public GameObject canvasVideoParent; // ← Atribuir o "CanvasVideos" aqui no Inspector
+    public GameObject canvasVideoParent;
+
+    [Header("Tempo que o Canvas do vídeo fica ativo após o fim")]
+    public float canvasDurationAfterVideo = 2f;
 
     [Header("Resultado final")]
     public GameObject[] objectsToActivate;
     public GameObject[] objectsToDeactivate;
 
     [Header("Collider do puzzle (para desativar após conclusão)")]
-    public Collider puzzleTriggerCollider; // ← Arraste o collider do PuzzleCameraController aqui
+    public Collider puzzleTriggerCollider;
 
     void Start()
     {
@@ -91,13 +94,13 @@ public class PuzzleLuzManager : MonoBehaviour
     {
         puzzleCompleted = true;
 
-        // ✅ Ativa o Canvas com o vídeo antes de tocar
+        // Ativa o Canvas com o vídeo
         if (canvasVideoParent != null && !canvasVideoParent.activeSelf)
         {
             canvasVideoParent.SetActive(true);
         }
 
-        // ✅ Reproduz vídeo
+        // Reproduz vídeo
         if (videoPlayer != null)
         {
             Debug.Log("[Puzzle] Reproduzindo vídeo...");
@@ -107,9 +110,16 @@ public class PuzzleLuzManager : MonoBehaviour
                 yield return null;
 
             Debug.Log("[Puzzle] Vídeo concluído.");
+
+            // Espera o tempo definido antes de esconder o canvas
+            if (canvasDurationAfterVideo > 0f)
+                yield return new WaitForSeconds(canvasDurationAfterVideo);
+
+            if (canvasVideoParent.activeSelf)
+                canvasVideoParent.SetActive(false);
         }
 
-        // ✅ Ativa e desativa objetos finais
+        // Ativa e desativa objetos finais
         foreach (GameObject obj in objectsToActivate)
         {
             if (obj != null)
@@ -122,7 +132,7 @@ public class PuzzleLuzManager : MonoBehaviour
                 obj.SetActive(false);
         }
 
-        // ✅ Desativa o collider do puzzle
+        // Desativa o collider
         if (puzzleTriggerCollider != null)
         {
             puzzleTriggerCollider.enabled = false;
