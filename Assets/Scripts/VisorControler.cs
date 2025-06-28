@@ -72,8 +72,24 @@ public class VisorOlhosController : MonoBehaviour
             if (idleTimer <= 0f && idleAnimations.Length > 0)
             {
                 string idleName = idleAnimations[Random.Range(0, idleAnimations.Length)];
-                if (visorAnimator) visorAnimator.Play(idleName);
-                if (olhosAnimator) olhosAnimator.Play(idleName);
+                int baseLayer = 0;
+
+                if (visorAnimator)
+                {
+                    if (visorAnimator.HasState(baseLayer, Animator.StringToHash(idleName)))
+                        visorAnimator.Play(idleName);
+                    else
+                        Debug.LogWarning($"Estado '{idleName}' não encontrado no Animator do visor!");
+                }
+
+                if (olhosAnimator)
+                {
+                    if (olhosAnimator.HasState(baseLayer, Animator.StringToHash(idleName)))
+                        olhosAnimator.Play(idleName);
+                    else
+                        Debug.LogWarning($"Estado '{idleName}' não encontrado no Animator dos olhos!");
+                }
+
                 idleTimer = idleCheckTime + Random.Range(0.5f, 1.5f);
             }
         }

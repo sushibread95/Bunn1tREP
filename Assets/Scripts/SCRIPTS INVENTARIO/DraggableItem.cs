@@ -92,7 +92,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             DropZone dropZone = hit.collider.GetComponent<DropZone>();
             if (dropZone != null && !string.IsNullOrEmpty(dropZone.acceptedItemID) && dropZone.acceptedItemID == itemID)
             {
-                dropZone.OnItemSolto();
+                dropZone.OnItemSolto(itemID);
                 Destroy(gameObject);
                 return;
             }

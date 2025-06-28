@@ -23,13 +23,19 @@ public class DropZone : MonoBehaviour
 
     private bool foiAtivado = false;
 
-    public void OnItemSolto()
+    public void OnItemSolto(string itemID)
     {
-        Debug.Log("[DropZone] OnItemSolto() chamado");
+        Debug.Log("[DropZone] OnItemSolto() chamado com ID: " + itemID);
 
         if (foiAtivado)
         {
             Debug.Log("[DropZone] Já foi ativado anteriormente. Ignorando.");
+            return;
+        }
+
+        if (!string.IsNullOrEmpty(acceptedItemID) && itemID != acceptedItemID)
+        {
+            Debug.LogWarning("[DropZone] Item incorreto. Esperado: '" + acceptedItemID + "', recebido: '" + itemID + "'. Ignorando.");
             return;
         }
 
