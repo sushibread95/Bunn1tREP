@@ -18,6 +18,7 @@ public class PuzzleDoorMover : MonoBehaviour
     {
         if (moveDoor)
         {
+            Debug.Log("[PuzzleDoorMover] Movendo porta...");
             transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * moveSpeed);
         }
     }
@@ -25,5 +26,6 @@ public class PuzzleDoorMover : MonoBehaviour
     public void OpenDoor()
     {
         moveDoor = true;
+        Debug.Log("[PuzzleDoorMover] Porta ativada para abrir.");
     }
 }
