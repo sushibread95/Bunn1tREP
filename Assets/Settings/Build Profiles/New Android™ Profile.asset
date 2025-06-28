@@ -70,7 +70,7 @@ MonoBehaviour:
     - line: '|   defaultScreenWidthWeb: 960'
     - line: '|   defaultScreenHeightWeb: 600'
     - line: '|   m_StereoRenderingPath: 0'
-    - line: '|   m_ActiveColorSpace: 1'
+    - line: '|   m_ActiveColorSpace: 0'
     - line: '|   unsupportedMSAAFallback: 0'
     - line: '|   m_SpriteBatchMaxVertexCount: 65535'
     - line: '|   m_SpriteBatchVertexThreshold: 300'
@@ -176,7 +176,7 @@ MonoBehaviour:
     - line: '|     enable360StereoCapture: 0'
     - line: '|   isWsaHolographicRemotingEnabled: 0'
     - line: '|   enableFrameTimingStats: 0'
-    - line: '|   enableOpenGLProfilerGPURecorders: 1'
+    - line: '|   enableOpenGLProfilerGPURecorders: 0'
     - line: '|   allowHDRDisplaySupport: 0'
     - line: '|   useHDRDisplay: 0'
     - line: '|   hdrBitDepth: 0'
@@ -989,7 +989,7 @@ MonoBehaviour:
         m_ExportAsGoogleAndroidProject: 0
         m_DebugSymbolLevel: 1
         m_DebugSymbolFormat: 5
-        m_CurrentDeploymentTargetId: __builtin__target_default
+        m_CurrentDeploymentTargetId: __builtin__target_all
         m_BuildType: 2
         m_BuildAppBundle: 0
         m_IPAddressToConnect: 

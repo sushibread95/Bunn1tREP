@@ -23,7 +23,7 @@ public class FlashRelampago : MonoBehaviour
             int quantidadeFlashes = Random.Range(1, 4);
             for (int i = 0; i < quantidadeFlashes; i++)
             {
-                luz.intensity = Random.Range(20f, 50f);
+                luz.intensity = Random.Range(40f, 80f);
                 luz.enabled = true;
                 yield return new WaitForSeconds(flashDuration);
                 luz.enabled = false;

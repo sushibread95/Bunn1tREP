@@ -1,5 +1,0 @@
-C:/Users/fggab/OneDrive/Documentos/GitHub/Project-M/.utmp/Debug/6j2j575p/arm64-v8a/CMakeFiles/edit_cache.dir
-C:/Users/fggab/OneDrive/Documentos/GitHub/Project-M/.utmp/Debug/6j2j575p/arm64-v8a/CMakeFiles/rebuild_cache.dir
-C:/Users/fggab/OneDrive/Documentos/GitHub/Project-M/.utmp/Debug/6j2j575p/arm64-v8a/GameActivity/CMakeFiles/game.dir
-C:/Users/fggab/OneDrive/Documentos/GitHub/Project-M/.utmp/Debug/6j2j575p/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
-C:/Users/fggab/OneDrive/Documentos/GitHub/Project-M/.utmp/Debug/6j2j575p/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
