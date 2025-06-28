@@ -232,8 +232,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -501, y: 220}
-  m_SizeDelta: {x: 500, y: 50}
+  m_AnchoredPosition: {x: -718.4, y: -17}
+  m_SizeDelta: {x: 1436.8, y: 245.8909}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &43435975
 MonoBehaviour:
@@ -255,13 +255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Gabriel F. Guimaraes
-
-    Paulo Henrique
-
-
-
-    Eixo 2- Projeto Mobile'
+  m_text: "Gabriel F. Guimaraes\nPaulo Henrique Soares da Silva\n\n \n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ff802c236fdc1047975d7e21ac6c4e3, type: 2}
   m_sharedMaterial: {fileID: 7122866152754465468, guid: 1ff802c236fdc1047975d7e21ac6c4e3, type: 2}
@@ -288,10 +282,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.45
-  m_fontSizeBase: 36
+  m_fontSize: 60.8
+  m_fontSizeBase: 60.8
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -326,7 +320,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -552.1741, w: -194.57959}
+  m_margin: {x: 0, y: 0, z: -0.087402344, w: -0.18286133}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -428,8 +422,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.2
-  m_fontSizeBase: 51.2
+  m_fontSize: 41.89
+  m_fontSizeBase: 41.89
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -669,8 +663,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.2
-  m_fontSizeBase: 51.2
+  m_fontSize: 41.89
+  m_fontSizeBase: 41.89
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1037,7 +1031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -370, y: 255}
+  m_AnchoredPosition: {x: -370, y: 264}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1137498753
@@ -1060,7 +1054,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CREDITOS
+  m_text: 'CREDITOS
+
+
+    Eixo 2- Projeto Mobile'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ff802c236fdc1047975d7e21ac6c4e3, type: 2}
   m_sharedMaterial: {fileID: 7122866152754465468, guid: 1ff802c236fdc1047975d7e21ac6c4e3, type: 2}
@@ -1087,7 +1084,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 43.55
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
