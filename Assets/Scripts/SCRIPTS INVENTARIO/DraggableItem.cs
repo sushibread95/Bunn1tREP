@@ -92,9 +92,19 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             DropZone dropZone = hit.collider.GetComponent<DropZone>();
             if (dropZone != null && !string.IsNullOrEmpty(dropZone.acceptedItemID) && dropZone.acceptedItemID == itemID)
             {
-                dropZone.OnItemSolto(itemID);
-                Destroy(gameObject);
-                return;
+                if (!string.IsNullOrEmpty(dropZone.tag) && dropZone.tag == itemID)
+                {
+                    Debug.Log($"[DraggableItem] DropZone válida com tag correspondente: {dropZone.tag}");
+                    dropZone.OnItemSolto(itemID);
+                    Destroy(gameObject);
+                    return;
+                }
+                else
+                {
+                    Debug.LogWarning($"[DraggableItem] Tag da DropZone não bate com o item. Esperado: {itemID}, encontrado: {dropZone.tag}");
+                    ReturnToSlot();
+                    return;
+                }
             }
             else
             {
@@ -105,34 +115,10 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
         else
         {
-            Debug.LogWarning("[Raycast] Nada foi atingido.");
-        }
-
-        Vector3 rayStart = player != null ? player.transform.position + player.transform.forward * 0.3f + Vector3.up * 0.3f : transform.position + Vector3.up * 0.3f;
-        if (Physics.Raycast(rayStart, Vector3.down, out RaycastHit groundHit, 2f, ~0))
-        {
-            GameObject clone = Instantiate(worldItemPrefab, groundHit.point + Vector3.up * 0.1f, Quaternion.identity);
-            ApplyOriginalReferencesTo(clone);
-
-            Rigidbody rb = clone.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.linearVelocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
-                rb.useGravity = true;
-                rb.isKinematic = false;
-            }
-
-            Debug.Log("Item dropado com sucesso no chão.");
-        }
-        else
-        {
-            Debug.LogWarning("Nenhum chão detectado. Retornando item ao inventário.");
+            Debug.LogWarning("[Raycast] Nada foi atingido. Retornando ao inventário.");
             ReturnToSlot();
             return;
         }
-
-        Destroy(gameObject);
     }
 
     private void ApplyOriginalReferencesTo(GameObject clone)
