@@ -1,2 +1,0 @@
-C:\Users\fggab\OneDrive\Documentos\GitHub\Bunn1t\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
-C:\Users\fggab\OneDrive\Documentos\GitHub\Bunn1t\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

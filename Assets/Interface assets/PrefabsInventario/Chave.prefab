@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 449770568626836910}
   - component: {fileID: 166870923708857657}
   - component: {fileID: 3752341714419039345}
+  - component: {fileID: 2116530408929840830}
   - component: {fileID: 1475944414957415227}
   m_Layer: 0
   m_Name: Chave
@@ -70,6 +71,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.1, z: 0.2}
   m_Center: {x: 0, y: 0.02884966, z: 0}
+--- !u!65 &2116530408929840830
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664535106317845353}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.23439503, y: 0.02, z: 0.106858015}
+  m_Center: {x: -0.0024428964, y: 0.02884966, z: 0.011026263}
 --- !u!54 &1475944414957415227
 Rigidbody:
   m_ObjectHideFlags: 0
