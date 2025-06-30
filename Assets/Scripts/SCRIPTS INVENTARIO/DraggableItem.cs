@@ -92,19 +92,10 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             DropZone dropZone = hit.collider.GetComponent<DropZone>();
             if (dropZone != null && !string.IsNullOrEmpty(dropZone.acceptedItemID) && dropZone.acceptedItemID == itemID)
             {
-                if (!string.IsNullOrEmpty(dropZone.tag) && dropZone.tag == itemID)
-                {
-                    Debug.Log($"[DraggableItem] DropZone válida com tag correspondente: {dropZone.tag}");
-                    dropZone.OnItemSolto(itemID);
-                    Destroy(gameObject);
-                    return;
-                }
-                else
-                {
-                    Debug.LogWarning($"[DraggableItem] Tag da DropZone não bate com o item. Esperado: {itemID}, encontrado: {dropZone.tag}");
-                    ReturnToSlot();
-                    return;
-                }
+                Debug.Log($"[DraggableItem] DropZone válida com ID correspondente: {dropZone.acceptedItemID}");
+                dropZone.OnItemSolto(itemID);
+                Destroy(gameObject);
+                return;
             }
             else
             {

@@ -23,6 +23,14 @@ public class DropZone : MonoBehaviour
 
     private bool foiAtivado = false;
 
+    private void OnValidate()
+    {
+        if (somAoAtivar == null)
+        {
+            Debug.LogWarning($"[DropZone] Campo 'somAoAtivar' está vazio em {gameObject.name}. Se não for usar som, ignore. Caso contrário, atribua um AudioSource válido.");
+        }
+    }
+
     public void OnItemSolto(string itemID)
     {
         Debug.Log("[DropZone] OnItemSolto() chamado com ID: " + itemID);
@@ -39,7 +47,6 @@ public class DropZone : MonoBehaviour
             return;
         }
 
-        // Tenta desativar parede ou objeto com lógica extra
         if (objetoParaDesativar != null)
         {
             Debug.Log("[DropZone] Tentando desativar objeto: " + objetoParaDesativar.name);
@@ -60,7 +67,6 @@ public class DropZone : MonoBehaviour
             Debug.Log("[DropZone] Nenhum objeto para desativar foi atribuído.");
         }
 
-        // Ativa os dois objetos (se existirem)
         if (objetoParaAtivar != null)
         {
             Debug.Log("[DropZone] Ativando objeto 1: " + objetoParaAtivar.name);
@@ -81,14 +87,16 @@ public class DropZone : MonoBehaviour
             Debug.Log("[DropZone] Objeto 2 não atribuído.");
         }
 
-        // Toca som (se tiver)
         if (somAoAtivar != null)
         {
             Debug.Log("[DropZone] Tocando som.");
             somAoAtivar.Play();
         }
+        else
+        {
+            Debug.Log("[DropZone] Nenhum AudioSource atribuído. Som não será tocado.");
+        }
 
-        // Dispara animação (se tiver)
         if (animador != null && !string.IsNullOrEmpty(triggerDeAtivacao))
         {
             Debug.Log("[DropZone] Disparando animação: " + triggerDeAtivacao);
